@@ -1,6 +1,9 @@
 import { render, screen } from "@testing-library/react";
+
+import "@testing-library/jest-dom"; 
 import TodoItem from "../todo-item";
-import { TodoType } from "../types";
+
+import type { TodoType } from "../types";
 
 describe("TodoItem", () => {
     it("should render the todo item", () => {

@@ -12,6 +12,9 @@ jobs:
 
       # 1. Instalar dependencias y construir la app (crear carpeta dist)
       - name: Install and Build
+        env:
+          VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.VITE_GOOGLE_ANALYTICS_ID }}
+          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
         run: npm ci && npm run build
 
       # 2. Desplegar a Firebase

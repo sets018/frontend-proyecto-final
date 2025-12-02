@@ -4,10 +4,10 @@ import { Check, TodoCol } from "./styled";
 
 const TodoItem = ({ todo, markAsDone, removeTodo }: { todo: TodoType, markAsDone: (id: string) => void, removeTodo: (id: string) => void }) => {
     const handleDelete = () => {
-        removeTodo(todo._id);
+        removeTodo(todo._id || "");
     }
     const handleDone = () => {
-        markAsDone(todo._id);
+        markAsDone(todo._id || "");
     }
     return (<tr>
                 <TodoCol><Check type="checkbox" checked={todo.done} onChange={handleDone}/></TodoCol>
