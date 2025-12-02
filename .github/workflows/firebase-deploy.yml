@@ -1,0 +1,24 @@
+name: Deploy to Firebase Hosting on merge
+on:
+  push:
+    branches:
+      - main  # Revisa abajo a la izquierda en VS Code si tu rama es 'main' o 'master'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1. Instalar dependencias y construir la app (crear carpeta dist)
+      - name: Install and Build
+        run: npm ci && npm run build
+
+      # 2. Desplegar a Firebase
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          # Esta es la llave que creamos manualmente en el paso anterior
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: frontend-proyecto-final-6d44b
