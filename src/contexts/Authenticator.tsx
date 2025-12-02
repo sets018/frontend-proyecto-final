@@ -4,7 +4,7 @@ import config from "../config";
 
 export const AuthenticatorContext = createContext({
     isAuthenticated: false,
-    login: ({ email, password }: { email: string, password: string }) => { },
+    login: (_args: { email: string, password: string }) => { }, 
     logout: () => { },
     loading: true
 });
